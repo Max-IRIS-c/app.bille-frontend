@@ -1,0 +1,12 @@
+
+#create-user-form{
+    width: 30vw;
+}
+#bt-zone{
+    padding: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

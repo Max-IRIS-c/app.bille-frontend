@@ -1,0 +1,10 @@
+#add-shift-container-bt{
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+}
+#add-shift-bt{
+    margin-top: 0;
+    width: 95%;
+    border-radius: 50px;
+}

@@ -39,7 +39,7 @@ export default class GetRequests{
       static async getDataInfos(startDate: string, endDate: string){
          if(!startDate || !endDate) return null
          try{
-            const url = `https://${IPadress()}/api/getDatesInfosOfGivenDates?startDate=${startDate}&endDate=${endDate}`
+            const url = `${IPadress()}/api/getDatesInfosOfGivenDates?startDate=${startDate}&endDate=${endDate}`
             const req = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -49,6 +49,7 @@ export default class GetRequests{
                credentials: 'include' 
             })
             const response = await req.json();
+            console.log("RESPONSE :: ", response)
             return response && response.msg === 'success_getAllShowAndShifts' ? response.data : []
          }catch(error){
             return 'error'
@@ -56,7 +57,7 @@ export default class GetRequests{
       }
       static async getUserList(){
          try{
-            const url = `https://${IPadress()}/api/getUserList`
+            const url = `${IPadress()}/api/getUserList`
             const req = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -75,7 +76,7 @@ export default class GetRequests{
       static async getDateInfos(idShow: number): Promise<ShowHandler | null>{
          if(!idShow) return null
          try{
-            const url = `https://${IPadress()}/api/getDateInfos?idShow=${idShow}`
+            const url = `${IPadress()}/api/getDateInfos?idShow=${idShow}`
             const req = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -107,7 +108,7 @@ export default class GetRequests{
       }
       static async getUserIdAndFirstname(idUser: number): Promise<User | null>{
          try{      
-            const url = `https://${IPadress()}/api/getSpecifiedUser?idUser=${idUser}` 
+            const url = `${IPadress()}/api/getSpecifiedUser?idUser=${idUser}` 
             const req = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -130,7 +131,7 @@ export default class GetRequests{
       
       static async getMyInfos(idUser: number): Promise<ShiftInfos[] | null>{
          try{
-            const url = `https://${IPadress()}/api/getMyInfos?idUser=${idUser}`
+            const url = `${IPadress()}/api/getMyInfos?idUser=${idUser}`
             const req = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -148,7 +149,7 @@ export default class GetRequests{
       }
       static async getAllUsers(): Promise<UserHandler[]>{
          try{
-            const url = `https://${IPadress()}/api/getAllUsers`
+            const url = `${IPadress()}/api/getAllUsers`
             const req = await fetch(url, {
                 method: 'GET',
                 headers: {

@@ -1,9 +1,9 @@
 #capsule-container{
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 2.5vw;
+    gap:5px;
     margin: 10px;
 }
 .info-userShifts-container{
@@ -12,7 +12,6 @@
     justify-content: top;
     align-items: center;
     border: 1px solid black;
-    width: 25%;
 }
 .date-label{
     font-weight: bold;
@@ -25,8 +24,9 @@
 .shift-capsule-user{
     width: 70%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    gap: 10px;
 }
 .link-toDetails{
     color: blue;
@@ -34,4 +34,16 @@
 }
 .link-toDetails:hover{
     cursor: pointer;
+}
+@media (max-width: 640px) {
+    #capsule-container{
+        display: flex;
+        flex-direction: column;
+        gap:7px;
+        width: 100%;
+        margin: 0;
+    }
+    #info-userShifts-container{
+        width: 100%;
+    }
 }

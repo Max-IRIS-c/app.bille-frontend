@@ -47,11 +47,11 @@ const ShiftZone: FunctionComponent<Props> = ({ shiftData }) => {
             const idUser = UserConnexion.getUserData().idUser
             const setUser = await SetRequests.setUserToShift(idShift, idUser)
             if(!setUser) throw new Error()
-            else window.alert("Merci de ton soutiens !")              
-            naviguate(`/calendar/details/${shiftData.fkShow}`)
+            else window.alert("Merci de ton soutiens !")          
+            window.location.reload()
         }catch(error){
             window.alert("Oups quelque chose a raté :S")
-            naviguate(`/calendar/details/${shiftData.fkShow}`)
+            //naviguate(`/calendar/details/${shiftData.fkShow}`)
         }
     }
     const handleUnsubscribeUser = async (idShift: number) => {
@@ -60,7 +60,7 @@ const ShiftZone: FunctionComponent<Props> = ({ shiftData }) => {
         const unsetUser = await SetRequests.unSetUserToShift(idUser, idShift)
         if(unsetUser.msg !== 'success') window.alert("Oups quelque chose a raté :S")
         else window.alert("Ca sera pour une prochaine !")
-        naviguate(`/calendar/details/${shiftData.fkShow}`)
+        window.location.reload()
     }
 
     return (

@@ -36,7 +36,7 @@ export default class SetRequests{
         console.log("set year template")
         //////console.log(data)
         try{
-            const url = `https://${IPadress()}/api/setYearTemplate` 
+            const url = `${IPadress()}/api/setYearTemplate` 
             const request = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -57,7 +57,7 @@ export default class SetRequests{
     static async setUserToShift(idShift: number, idUser: number): Promise<boolean>{
         //
         try{
-            const url = `https://${IPadress()}/api/subscribeUserToShift` 
+            const url = `${IPadress()}/api/subscribeUserToShift` 
             const request = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -79,7 +79,7 @@ export default class SetRequests{
     static async unSetUserToShift(idUser: number, idShift: number){
         //
         try{
-            const url = `https://${IPadress()}/api/removeUserFromShift` 
+            const url = `${IPadress()}/api/removeUserFromShift` 
             const request = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -109,7 +109,7 @@ export default class SetRequests{
             type: type
         }
         try{
-            const url = `https://${IPadress()}/api/subscribeUserToExtraTime` 
+            const url = `${IPadress()}/api/subscribeUserToExtraTime` 
             const request = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -133,7 +133,7 @@ export default class SetRequests{
         try{
             console.log("delete ::: ", idExtraTime)
             if(!idExtraTime) throw new Error()
-            const url = `https://${IPadress()}/api/deleteUserToExtraTime` 
+            const url = `${IPadress()}/api/deleteUserToExtraTime` 
             const request = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -157,7 +157,7 @@ export default class SetRequests{
     /******************************* update show *************************************/
     static async updateShow(data: ActualShowInfos | Show){
         try{
-            const url = `https://${IPadress()}/api/updateShowInformations` 
+            const url = `${IPadress()}/api/updateShowInformations` 
             const request = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -177,7 +177,7 @@ export default class SetRequests{
     }
     static async updateShifts(givenShifts: Shift[]){
         try{
-            const url = `https://${IPadress()}/api/updateShowShifts` 
+            const url = `${IPadress()}/api/updateShowShifts` 
             const request = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -196,7 +196,7 @@ export default class SetRequests{
         }
     }
     static async createUser(newUser: UserHandler): Promise<string>{
-        const url = `https://${IPadress()}/api/createUser`
+        const url = `${IPadress()}/api/createUser`
         const request = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -212,7 +212,7 @@ export default class SetRequests{
     static async throwUserDelete(idUser: number): Promise<string | null>{
         try{
             console.log("throwUserDelete : ", idUser)
-            const url = `https://${IPadress()}/api/deleteUser`
+            const url = `${IPadress()}/api/deleteUser`
             const request = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -233,7 +233,7 @@ export default class SetRequests{
     static async throwUserReset(idUser: number): Promise<boolean>{
         try{
             console.log("throwUserDelete : ", idUser)
-            const url = `https://${IPadress()}/api/resetUser`
+            const url = `${IPadress()}/api/resetUser`
             const request = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -256,7 +256,7 @@ export default class SetRequests{
     static async throwUserUpdate(givenUser: UserHandler): Promise<boolean>{
         try{
             console.log("givenUser :: ", givenUser)
-            const url = `https://${IPadress()}/api/updateUser`
+            const url = `${IPadress()}/api/updateUser`
             const request = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -274,7 +274,7 @@ export default class SetRequests{
     }
     static async throwLoginReq(login: string, password: string){
         try{
-            const url = `https://${IPadress()}/api/login`
+            const url = `${IPadress()}/api/login`
             const request = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -294,7 +294,7 @@ export default class SetRequests{
     }
     static async confirmFirstConnexion(login: string, firstPassword: string, secondPassword: string){
         try{
-            const url = `https://${IPadress()}/api/confirmLogin`
+            const url = `${IPadress()}/api/confirmLogin`
             const request = await fetch(url, {
                 method: 'POST',
                 headers: {

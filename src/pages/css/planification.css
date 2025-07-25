@@ -1,3 +1,5 @@
+
+
 #formPlanif{
     display: flex;
     justify-content: space-around;
@@ -27,8 +29,7 @@
 #dayWeekTemplate,
 #yearInput,
 #addHoliday{
-    width: 20%;
-    margin: auto;
+    width: 100%;
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -80,4 +81,15 @@ h5{
 .optionBt{
     background-color: white;
     color: black;
+}
+@media (min-width: 640px) {
+    #dayWeekTemplate,
+    #yearInput,
+    #addHoliday{
+        margin: auto;
+        width: 20%;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
 }

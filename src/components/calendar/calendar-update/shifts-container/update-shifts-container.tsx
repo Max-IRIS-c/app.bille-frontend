@@ -8,7 +8,7 @@ import '../css/update-shifts-container.css'
 type Props = {
     idShow: number,
     showInfos: ShowHandler
-    updateAllShifts: (newShifts: Shift[] | null) => void
+    updateAllShifts: (newShifts: any) => void
 }
 
 const UpdateShiftsContainer: FunctionComponent<Props> = ({ idShow, showInfos, updateAllShifts }) => {
@@ -51,7 +51,7 @@ const UpdateShiftsContainer: FunctionComponent<Props> = ({ idShow, showInfos, up
         setReunionShifts(newReunionShifts)
     }
     const submitAllShifts = () => {
-        const allShifts = [...barShifts, ...entreeShifts, ...parkingShifts];
+        const allShifts = [{idShow: idShow}, ...barShifts, ...entreeShifts, ...parkingShifts];
         updateAllShifts(allShifts);
     }
 
@@ -101,13 +101,11 @@ const UpdateShiftsContainer: FunctionComponent<Props> = ({ idShow, showInfos, up
     }
     return (
         <>
-            { displayShiftsToUpdates('bar', barShifts) }
-            { displayShiftsToUpdates('entree', entreeShifts) }
-            { displayShiftsToUpdates('parking', parkingShifts) }
-            { displayShiftsToUpdates ('reunion', reunionShifts)}
-            <div id="confirm-update-shifts">
-               { /*} <button onClick={submitAllShifts}>Confirmer modifications</button>
-            */} </div>
+            { (showInfos.status !== 'ferme' && showInfos.status !== 'reunion') ? displayShiftsToUpdates('bar', barShifts) : null }
+            { (showInfos.status === 'soiree') ? displayShiftsToUpdates('entree', entreeShifts) : null }
+            { (showInfos.status === 'soiree') ? displayShiftsToUpdates('parking', parkingShifts) : null }
+            { (showInfos.status === 'reunion') ? displayShiftsToUpdates ('reunion', reunionShifts) : null}
+
         </>
     )
 } 

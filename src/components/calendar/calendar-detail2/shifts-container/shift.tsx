@@ -59,7 +59,7 @@ const ShiftZone: FunctionComponent<Props> = ({ shiftData }) => {
         const idUser = UserConnexion.getUserData().idUser
         const unsetUser = await SetRequests.unSetUserToShift(idUser, idShift)
         if(unsetUser.msg !== 'success') window.alert("Oups quelque chose a raté :S")
-        else window.alert("Ca sera pour une prochaine !")
+        else window.alert("N'oublies pas de te faire remplacer")
         window.location.reload()
     }
 

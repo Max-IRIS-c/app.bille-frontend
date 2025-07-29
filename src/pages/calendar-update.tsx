@@ -12,7 +12,7 @@ import UserConnexion from "../helpers/user-connexion";
 const CalendarUpdate: FunctionComponent = () => {
     const { idShow } = useParams<{idShow: any}>()
     const [showInfos, setShowInfos] = useState<ShowHandler>(null!)
-    const [selectedPage, setSelectedPage] = useState<string>('show')
+    const [isShiftSectionOpen, setIsShiftSectionOpen] = useState<boolean>(false)
     const naviguate = useNavigate()
 
     useEffect(() => {
@@ -45,9 +45,6 @@ const CalendarUpdate: FunctionComponent = () => {
         if (!rawData) throw new Error("Aucune donnée reçue")
         return rawData
     }
-    const handleChangePage = (newPage: string) => {
-        setSelectedPage(newPage)
-    }
     const updateAllShifts = async(newShifts: Shift[] | null): Promise<void> => {
         const updatedShow: ShowHandler = await showInfos.updateAllShifts(newShifts)
         setShowInfos(updatedShow)
@@ -60,12 +57,8 @@ const CalendarUpdate: FunctionComponent = () => {
             </div>
             { /* Title => "Vendredi 9 Janvier2025" */ }
             <div className='title1'>{ showInfos ? showInfos.formatDateLabel() : '...' }</div> 
-            <div id="change-page-bt">
-                { selectedPage !== 'show' ? <button onClick={() => handleChangePage('show')} className="update-info-notes"> Modifier infos générales </button> : null }
-                { (selectedPage !== 'shifts' && UserConnexion.myAdminLevel() === 1) ? <button onClick={() => handleChangePage('shifts')} className="update-info-notes"> Modifier les shifts du jour </button> : null }
-            </div>
-            { selectedPage === 'show' ? <UpdateShow givenShow={showInfos} /> : null }
-            { selectedPage === 'shifts' ? <UpdateShiftsContainer idShow={showInfos.laBilleShowId} showInfos={showInfos} updateAllShifts={updateAllShifts} /> : null }
+            <UpdateShow givenShow={showInfos} />
+            { UserConnexion.myAdminLevel() === 1 ? <UpdateShiftsContainer idShow={showInfos.laBilleShowId} showInfos={showInfos} updateAllShifts={updateAllShifts} /> : null }
         </div>
     )
 }

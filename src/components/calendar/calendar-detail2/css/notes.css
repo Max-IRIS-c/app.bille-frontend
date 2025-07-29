@@ -1,6 +1,7 @@
 #notes-textarea{
     background-color: white;
     color: black;
+    height: 70vh;
 }
 #no-infos{
     text-align: center;

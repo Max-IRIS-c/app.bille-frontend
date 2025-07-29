@@ -1,3 +1,4 @@
+import SetRequests from "../services/setters";
 
 type ShiftedUser = {
     idSubscribe: number | null,
@@ -33,7 +34,7 @@ export default class Shift {
         this.indexForType = indexForType;
         this.users = users;
     }
-    changeStartTime(newStartTime: string): Shift{
+    async changeStartTime(newStartTime: string): Promise<Shift>{
         this.startTime = newStartTime
         return this.formatedShift()
     }
@@ -67,5 +68,9 @@ export default class Shift {
             this.indexForType,
             this.users,
         )
+    }
+    async sendUpdateToServer(){
+        const updateAction = await SetRequests.updateShift(this)
+        return updateAction.status === 'success' ? true : false 
     }
 }

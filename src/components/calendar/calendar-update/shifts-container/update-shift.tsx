@@ -2,6 +2,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import Shift from "../../../../models/shifts";
 import '../css/update-shift.css'
 import UpdateShiftUsers from "./update-shift-users";
+import SetRequests from "../../../../services/setters";
 
 type Props = {
     shift: Shift
@@ -19,25 +20,34 @@ const UpdateShift: FunctionComponent<Props> = ({ shift }) => {
         setactualShift(shift)
     }, [])
 
-    const handleChangeStartTime = (newStartTime: string): void =>{
-        const updatedShift: Shift = actualShift.changeStartTime(newStartTime)
-        setactualShift(updatedShift)
+    const handleChangeStartTime = async (newStartTime: string): Promise<void> =>{
+        const updatedShift: Shift = await actualShift.changeStartTime(newStartTime)
+        const srvUpdate = await updatedShift.sendUpdateToServer()
+        if(srvUpdate) setactualShift(updatedShift)
+        else window.alert("Oups, il y a eu un soucis")
     }
-    const handleChangeEndTime = (newEndTime: string): void =>{
+    const handleChangeEndTime = async (newEndTime: string): Promise<void> =>{
         const updatedShift: Shift = actualShift.changeEndTime(newEndTime)
-        setactualShift(updatedShift)
+        const srvUpdate = await updatedShift.sendUpdateToServer()
+        if(srvUpdate) setactualShift(updatedShift)
+        else window.alert("Oups, il y a eu un soucis")
     }
-    const handleChangeMaxUsers = (newMaxUsers: string) => {
+    const handleChangeMaxUsers = async (newMaxUsers: string): Promise<void> => {
         const updatedShift: Shift = actualShift.changeMaxUsers(newMaxUsers)
-        setactualShift(updatedShift)
+        const srvUpdate = await updatedShift.sendUpdateToServer()
+        if(srvUpdate) setactualShift(updatedShift)
+        else window.alert("Oups, il y a eu un soucis")
     }
-    
-    const handleAddUserToShift = (givenUser: ShiftedUser): void => {  
+    const handleAddUserToShift = async(givenUser: ShiftedUser): Promise<void> => {  
+        const insertAction = await SetRequests.setUserToShift(actualShift.idShift, givenUser.idUser)
+        if(!insertAction) return 
         const updatedShift: Shift | string = actualShift.addUser(givenUser)
         if(typeof updatedShift === 'string') window.alert(updatedShift)
         else setactualShift(updatedShift)
     }
-    const handleRemoveUserFromShift = (givenUser: ShiftedUser): void => {
+    const handleRemoveUserFromShift = async (givenUser: ShiftedUser): Promise<void> => {
+        const insertAction = await SetRequests.unSetUserToShift(givenUser.idUser, actualShift.idShift)
+        if(!insertAction) return 
         const updatedShift: Shift = actualShift.removeUser(givenUser)
         setactualShift(updatedShift)
     }

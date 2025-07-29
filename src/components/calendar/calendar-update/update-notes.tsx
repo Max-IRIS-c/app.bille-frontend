@@ -15,26 +15,26 @@ const UpdateNotes: FunctionComponent<Props> = ({ notes, handleChangeNotes, statu
         console.log("notes : ", notes)
         const notesToSet: string |null = (status === 'soiree' && (!notes || notes === "")) ? 
         'Nom événement : salut salut\n' +
-    'Horaire :  \n' +
-    'Entrée :\n' +
-    '\n' +
-    'Groupe : \n' +
-    'Style : \n' +
-    'Contact groupe : \n' +
-    'Description : \n' +
-    '\n' +
-    'Ingé son : \n' +
-    'Horaire arrivée :\n' +
-    'Horaire sound check :\n' +
-    'Line up : \n' +
-    '\n' +
-    'Resp.Repas : \n' +
-    'Nbr pers :  (sans compter bénévoles)\n' +
-    'Régime particulier : \n' +
-    '\n' +
-    'Merch : Oui / Non \n' +
-    '\n' +
-    'Commentaire :' : notes
+        'Horaire :  \n' +
+        'Entrée :\n' +
+        '\n' +
+        'Groupe : \n' +
+        'Style : \n' +
+        'Contact groupe : \n' +
+        'Description : \n' +
+        '\n' +
+        'Ingé son : \n' +
+        'Horaire arrivée :\n' +
+        'Horaire sound check :\n' +
+        'Line up : \n' +
+        '\n' +
+        'Resp.Repas : \n' +
+        'Nbr pers :  (sans compter bénévoles)\n' +
+        'Régime particulier : \n' +
+        '\n' +
+        'Merch : Oui / Non \n' +
+        '\n' +
+        'Commentaire :' : notes
         setActualNotes(notesToSet)
 
     }, [notes,status])

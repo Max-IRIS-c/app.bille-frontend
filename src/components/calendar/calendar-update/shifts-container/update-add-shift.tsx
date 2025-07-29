@@ -1,6 +1,7 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import Shift from "../../../../models/shifts";
 import './css/update-add-shift.css'
+import SetRequests from "../../../../services/setters";
 
 type Props = {
     handleAddNewShift: (newShift: Shift, type: string) => void,
@@ -26,8 +27,15 @@ const AddShift: FunctionComponent<Props> = ({ fkShow, indexToPut, typeToPut, sta
         setShiftToAdd(updatedNewShift)
     }, [fkShow, indexToPut, startTimeToPut, indexToPut])
 
-    const addShift = (newShift: Shift) => {
-        handleAddNewShift(newShift, shiftToAdd.type)
+    // try db insertion of new shift 
+    const addShift = async (newShift: Shift) => {
+        const createShift = await SetRequests.createShift(newShift)
+        if(createShift.status === 'success'){  
+            const idOfNewShift = createShift.data.idShift
+            newShift.idShift = idOfNewShift
+            handleAddNewShift(newShift, shiftToAdd.type)
+        }
+        else window.alert("Oups, il y a eu un soucis.")
     }
     return (
         <div id="add-shift-container-bt">

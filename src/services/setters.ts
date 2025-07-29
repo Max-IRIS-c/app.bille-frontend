@@ -313,4 +313,39 @@ export default class SetRequests{
             return null
         }
     }
+    static async createShift(givenShift: Shift){
+        try{
+            const url = `${IPadress()}/api/createShift`
+            const request = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include', 
+                body: JSON.stringify(givenShift)
+            })
+            const response = await request.json()
+            return response
+        }catch(error){
+            return null
+        }
+    }
+    static async updateShift(givenShift: Shift){
+        try{
+            const url = `${IPadress()}/api/updateShift`
+            const request = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include', 
+                body: JSON.stringify(givenShift)
+            })
+            const response = await request.json()
+            console.log("update shift response : ", response)
+            return response
+        }catch(error){
+            return null
+        }
+    }
 }

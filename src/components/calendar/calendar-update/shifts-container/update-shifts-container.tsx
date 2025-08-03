@@ -37,7 +37,7 @@ const UpdateShiftsContainer: FunctionComponent<Props> = ({ idShow, showInfos }) 
         let newParkingShifts = parkingShifts
         let newReunionShifts = reunionShifts
         console.log("newShift2 ::: ", newShift)
-        
+        console.log("type : ", type)
         if (type === 'bar')  newBarShifts = [...barShifts, newShift];
         else if (type === 'entree') newEntreeShifts = [...entreeShifts, newShift];
         else if (type === 'parking') newParkingShifts = [...parkingShifts, newShift];

@@ -31,6 +31,7 @@ const AddShift: FunctionComponent<Props> = ({ fkShow, indexToPut, typeToPut, sta
     const addShift = async (newShift: Shift) => {
         const createShift = await SetRequests.createShift(newShift)
         if(createShift.status === 'success'){  
+            console.log("createdShift : ", createShift.data)
             const idOfNewShift = createShift.data.idShift
             newShift.idShift = idOfNewShift
             handleAddNewShift(newShift, shiftToAdd.type)

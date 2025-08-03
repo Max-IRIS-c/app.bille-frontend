@@ -32,12 +32,11 @@ const UpdateShiftsContainer: FunctionComponent<Props> = ({ idShow, showInfos }) 
         return filtredArray ?? []
     }
     const handleAddNewShift = (newShift: Shift, type: string) => {
-        window.location.reload()
-        /*let newBarShifts = barShifts
+        let newBarShifts = barShifts
         let newEntreeShifts = entreeShifts
         let newParkingShifts = parkingShifts
         let newReunionShifts = reunionShifts
-        console.log("newShift :: ", newShift)
+        console.log("newShift2 ::: ", newShift)
         
         if (type === 'bar')  newBarShifts = [...barShifts, newShift];
         else if (type === 'entree') newEntreeShifts = [...entreeShifts, newShift];
@@ -49,7 +48,6 @@ const UpdateShiftsContainer: FunctionComponent<Props> = ({ idShow, showInfos }) 
         setEntreeShifts(newEntreeShifts);
         setParkingShifts(newParkingShifts);
         setReunionShifts(newReunionShifts)
-        */
     }
 
     const displayShiftsToUpdates = (givenType: string, shiftsArray: Shift[] | null) => {

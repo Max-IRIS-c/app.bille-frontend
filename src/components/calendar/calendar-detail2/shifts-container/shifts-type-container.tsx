@@ -25,7 +25,7 @@ const ShiftsTypeContainer: FunctionComponent<Props> = ({ type, shifts }) => {
             {
                 !allShifts ? null : 
                 allShifts.map((shift: Shift, index: number) => {
-                    return <ShiftZone shiftData={shift} key={ index } />
+                    return <ShiftZone shiftData={shift} key={ index } maxUsers={shift.maxUsers} />
                 })
             }
         </div>

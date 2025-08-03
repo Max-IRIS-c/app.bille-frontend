@@ -61,3 +61,15 @@
     padding-right: 15px;
     padding-left: 15px;
 }
+#usersNb{
+    text-align: center;
+    width: 20%;
+    border: 2px solid white;
+    border-top: none;
+    margin: left;
+    padding: 10px;
+    border-radius: 0 0 10px 0;
+}
+#usersNb p{
+    margin: 0;
+}

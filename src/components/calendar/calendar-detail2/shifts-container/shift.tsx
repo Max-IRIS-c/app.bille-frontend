@@ -6,14 +6,15 @@ import SetRequests from '../../../../services/setters';
 import './css/shift.css'
 
 type Props = {
-    shiftData: Shift
+    shiftData: Shift,
+    maxUsers: number
 }
 type ShiftedUser = {
     idSubscribe: number | null,
     idUser: number,
     username: string
 }
-const ShiftZone: FunctionComponent<Props> = ({ shiftData }) => {
+const ShiftZone: FunctionComponent<Props> = ({ shiftData, maxUsers }) => {
     const [usersInfo, setUsersInfo] = useState<ShiftedUser[]>(shiftData.users)
     const [userShifted, setUserShifted] = useState<boolean>(false)
     const naviguate = useNavigate()
@@ -62,7 +63,6 @@ const ShiftZone: FunctionComponent<Props> = ({ shiftData }) => {
         else window.alert("N'oublies pas de te faire remplacer")
         window.location.reload()
     }
-
     return (
         <div>
             <div className='shiftZone'>
@@ -71,6 +71,9 @@ const ShiftZone: FunctionComponent<Props> = ({ shiftData }) => {
                     <p>{shiftData.startTime}</p>
                     <p>-</p>
                     <p>{shiftData.endTime}</p>
+                </div>
+                <div id='usersNb'>
+                    <p>{ usersInfo.length } / { maxUsers }</p>
                 </div>
                 {/* users du shift */}
                 <div className='usersZone'>

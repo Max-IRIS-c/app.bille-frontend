@@ -16,7 +16,7 @@ const UpdateShift: FunctionComponent<Props> = ({ shift }) => {
     const [actualShift, setactualShift] = useState<Shift>(null!)
 
     useEffect(() => {
-        //console.log("givenSHift ::: ", shift)
+        console.log("givenSHift ::: ", shift)
         setactualShift(shift)
     }, [])
 

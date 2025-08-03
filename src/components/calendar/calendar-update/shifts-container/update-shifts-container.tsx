@@ -8,10 +8,9 @@ import '../css/update-shifts-container.css'
 type Props = {
     idShow: number,
     showInfos: ShowHandler
-    updateAllShifts: (newShifts: any) => void
 }
 
-const UpdateShiftsContainer: FunctionComponent<Props> = ({ idShow, showInfos, updateAllShifts }) => {
+const UpdateShiftsContainer: FunctionComponent<Props> = ({ idShow, showInfos }) => {
     const [barShifts, setBarShifts] = useState<Shift[]>([])
     const [entreeShifts, setEntreeShifts] = useState<Shift[]>([])
     const [parkingShifts, setParkingShifts] = useState<Shift[]>([])
@@ -33,7 +32,8 @@ const UpdateShiftsContainer: FunctionComponent<Props> = ({ idShow, showInfos, up
         return filtredArray ?? []
     }
     const handleAddNewShift = (newShift: Shift, type: string) => {
-        let newBarShifts = barShifts
+        window.location.reload()
+        /*let newBarShifts = barShifts
         let newEntreeShifts = entreeShifts
         let newParkingShifts = parkingShifts
         let newReunionShifts = reunionShifts
@@ -49,10 +49,7 @@ const UpdateShiftsContainer: FunctionComponent<Props> = ({ idShow, showInfos, up
         setEntreeShifts(newEntreeShifts);
         setParkingShifts(newParkingShifts);
         setReunionShifts(newReunionShifts)
-    }
-    const submitAllShifts = () => {
-        const allShifts = [{idShow: idShow}, ...barShifts, ...entreeShifts, ...parkingShifts];
-        updateAllShifts(allShifts);
+        */
     }
 
     const displayShiftsToUpdates = (givenType: string, shiftsArray: Shift[] | null) => {

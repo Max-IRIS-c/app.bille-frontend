@@ -45,10 +45,11 @@ const CalendarUpdate: FunctionComponent = () => {
         if (!rawData) throw new Error("Aucune donnée reçue")
         return rawData
     }
+    /*
     const updateAllShifts = async(newShifts: Shift[] | null): Promise<void> => {
         const updatedShow: ShowHandler = await showInfos.updateAllShifts(newShifts)
         setShowInfos(updatedShow)
-    } 
+    } */
     return (
         !showInfos ? null : 
         <div id="CalendarDetails">
@@ -58,7 +59,7 @@ const CalendarUpdate: FunctionComponent = () => {
             { /* Title => "Vendredi 9 Janvier2025" */ }
             <div className='title1'>{ showInfos ? showInfos.formatDateLabel() : '...' }</div> 
             <UpdateShow givenShow={showInfos} />
-            { UserConnexion.myAdminLevel() === 1 ? <UpdateShiftsContainer idShow={showInfos.laBilleShowId} showInfos={showInfos} updateAllShifts={updateAllShifts} /> : null }
+            { UserConnexion.myAdminLevel() === 1 ? <UpdateShiftsContainer idShow={showInfos.laBilleShowId} showInfos={showInfos} /> : null }
         </div>
     )
 }

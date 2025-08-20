@@ -10,6 +10,11 @@ const Notes: FunctionComponent<Props> = ({showNotes, status}) => {
     const [notes, setNotes] = useState<string | null>(showNotes)
     const [isNotesOpen, setIsNotesOpen] = useState<boolean>(false)
 
+    useEffect(() => {
+        setNotes(showNotes)
+        setIsNotesOpen(false)
+    }, [showNotes])
+
     const handleChangeNotesState = () => {
         setIsNotesOpen(!isNotesOpen)  
     }

@@ -14,7 +14,7 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
     const [isUpdateOpen, setIsUpdateOpen] = useState<boolean>(false)
     
     useEffect(() => {
-        console.log("user ::: ", user)
+        //console.log("user ::: ", user)
         setReferenceUser(user.clone())
         setUpdatedUser(user.clone())
     }, [user])
@@ -29,7 +29,7 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
         setIsUpdateOpen(true)
     }
     const cancelUpdate = () => {
-        console.log("reference user : ", referenceUser)
+        //console.log("reference user : ", referenceUser)
         setUpdatedUser(referenceUser)
         setIsUpdateOpen(false)
     }
@@ -50,7 +50,7 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
     }
     const handleUpdateUser = async () => {
         try{
-            console.log("updatedUser : ", updatedUser)
+            //console.log("updatedUser : ", updatedUser)
             if(!updatedUser) throw new Error()
             const sendUpdate: boolean = await SetRequests.throwUserUpdate(updatedUser)
             const msg: string = sendUpdate ? "Utilisateur modifié avec succès" : "Oups, il y a eu un soucis."

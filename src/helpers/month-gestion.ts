@@ -37,14 +37,14 @@ export default class MonthGestion {
     } 
     // return label "7 janvier 2019" from a given Date()
     static getCompletDateLabel = (givenDate: Date) => {
-        ////console.log("givenDate : ", givenDate)
+        //////console.log("givenDate : ", givenDate)
         const date = givenDate.toISOString().split("T")[0] 
         const dateYYYYmmDD = parseISO(date);
         const day = format(dateYYYYmmDD, 'EEEE', { locale: fr });
         const dateDay = format(dateYYYYmmDD, 'd', { locale: fr });
         const dateMonth = format(dateYYYYmmDD, 'MMMM', { locale: fr });
         const dateYear = format(dateYYYYmmDD, 'yyyy', { locale: fr });
-        ////console.log(`${day} ${dateDay} ${dateMonth} ${dateYear}`)
+        //////console.log(`${day} ${dateDay} ${dateMonth} ${dateYear}`)
         return `${day} ${dateDay} ${dateMonth} ${dateYear}`  || null;
     } 
 } 

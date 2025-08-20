@@ -20,7 +20,7 @@ const MyInfos: FunctionComponent = () => {
         const loadShiftsInfos = async () => {
             const myId = (UserConnexion.getUserData()).idUser
             const myShiftsInfos: ShiftInfos[] | null = await GetRequests.getMyInfos(myId)
-            console.log("myInfos : ", myShiftsInfos)
+            //console.log("myInfos : ", myShiftsInfos)
             myShiftsInfos ? setShiftInfos(myShiftsInfos) : setShiftInfos(null)
         }
         loadShiftsInfos()

@@ -36,8 +36,8 @@ const UpdateShiftsContainer: FunctionComponent<Props> = ({ idShow, showInfos }) 
         let newEntreeShifts = entreeShifts
         let newParkingShifts = parkingShifts
         let newReunionShifts = reunionShifts
-        console.log("newShift2 ::: ", newShift)
-        console.log("type : ", type)
+        //console.log("newShift2 ::: ", newShift)
+        //console.log("type : ", type)
         if (type === 'bar')  newBarShifts = [...barShifts, newShift];
         else if (type === 'entree') newEntreeShifts = [...entreeShifts, newShift];
         else if (type === 'parking') newParkingShifts = [...parkingShifts, newShift];
@@ -91,15 +91,12 @@ const UpdateShiftsContainer: FunctionComponent<Props> = ({ idShow, showInfos }) 
             return null
         }
     }
-    const submitShiftsUpdate = async () => {
-        
-    }
     return (
         <>
-            { (showInfos.status !== 'ferme' && showInfos.status !== 'reunion') ? displayShiftsToUpdates('bar', barShifts) : null }
+            { (showInfos.status !== 'ferme') ? displayShiftsToUpdates('bar', barShifts) : null }
             { (showInfos.status === 'soiree') ? displayShiftsToUpdates('entree', entreeShifts) : null }
             { (showInfos.status === 'soiree') ? displayShiftsToUpdates('parking', parkingShifts) : null }
-            { (showInfos.status === 'reunion') ? displayShiftsToUpdates ('reunion', reunionShifts) : null}
+            { displayShiftsToUpdates ('reunion', reunionShifts) }
 
         </>
     )

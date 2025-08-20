@@ -47,13 +47,13 @@ const Planification: FunctionComponent= () => {
         activateSelectElements(allSelects)
     }, []);
     useEffect(() => {
-        //console.log("weekTemplateToRecord ! ")
+        ////console.log("weekTemplateToRecord ! ")
         const allSelect: NodeListOf<Element> = document.querySelectorAll('.selectStatus')
         activateSelectElements(allSelect)
     }, [weekTemplateToRecord]);
 
     const handleChangeSelect = (name: string, newValue: string) => {
-        //console.log("handle change ! : ", name, ", ", newValue) 
+        ////console.log("handle change ! : ", name, ", ", newValue) 
         // update weekTemplateToRecord
         const newClass = (newValue === 'closed') ? 'closedValue' : 'openValue'       
         const newField: Field =  {name: name, value: newValue, class: newClass}

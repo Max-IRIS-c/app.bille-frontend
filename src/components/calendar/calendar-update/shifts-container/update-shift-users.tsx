@@ -28,7 +28,7 @@ const UpdateShiftUsers: FunctionComponent<Props> = ({ users, handleAddUserToShif
     useEffect(() => {
         const getAllUsers = async () => {        
             const listOfUser: any = await GetRequests.getUserList()         
-            //console.log("LIST OF USER ::: ", listOfUser)
+            ////console.log("LIST OF USER ::: ", listOfUser)
             setUserList(listOfUser)
         }
         getAllUsers()
@@ -79,7 +79,7 @@ const UpdateShiftUsers: FunctionComponent<Props> = ({ users, handleAddUserToShif
                         <option value="">-</option>
                         {
                             userList.map((user: ListedUser, index: number) => {
-                                //console.log("user ::: ", user)
+                                ////console.log("user ::: ", user)
                                 return <option value={user.idUser} key={index}>{user.firstname}</option>
                             })
                         }

@@ -37,7 +37,7 @@ const ShiftsContainer: FunctionComponent<Props> = ({ idShow }) => {
     const getShiftsInfos = async (idShow: number): Promise<Shift[] | null> => {
         try{
             const rawData: ShowHandler | null = await GetRequests.getDateInfos(idShow)
-            console.log("rawData ::: ", rawData)
+            //console.log("rawData ::: ", rawData)
             if (!rawData) throw new Error("Aucune donnée reçue")
             return rawData.shifts ?? null
         }catch(err){

@@ -147,7 +147,7 @@ export default class ShowHandler {
     // -------------------- formatage des données ------------------------------------
     // return string of start of first shift and end of last shift
     formatHoraires(): string{
-        ////console.log("this.shifts : ", this.shifts)
+        //////console.log("this.shifts : ", this.shifts)
         if(this.shifts.length === 0) return ' - '
         const start: string = this.shifts[0].startTime.split(":").slice(0, 2).join(":")
         const end: string = this.shifts[this.shifts.length-1].endTime.split(":").slice(0, 2).join(":")

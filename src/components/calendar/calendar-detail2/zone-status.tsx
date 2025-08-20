@@ -12,7 +12,7 @@ const StatusZone: FunctionComponent<Props> = ({status}) => {
     }, [status])
 
     const formatStatus = (givenStatus: string) => {
-        //console.log("givenStatus : ", givenStatus)
+        ////console.log("givenStatus : ", givenStatus)
                 switch(givenStatus){
             case 'normale' :
                 setFormatedStatus('Bar ouvert !')

@@ -43,7 +43,7 @@ const UpdateShow: FunctionComponent<Props> = ({ givenShow }) => {
             window.alert("modifications effectuées avec succès")
             naviguate(`/calendar/details/${showInfos.laBilleShowId}`)
         }catch(error){
-            //console.log(error)
+            ////console.log(error)
             window.alert("Oups, quelque chose s'est mal passé :S")
         }
     }

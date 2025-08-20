@@ -39,7 +39,7 @@ const ShiftZone: FunctionComponent<Props> = ({ shiftData, maxUsers }) => {
         if(!shiftData.users) return false
         const myId = UserConnexion.getUserData().idUser
         const userInShift = usersInfo.some((user: ShiftedUser) => user.idUser === myId) 
-        console.log("isUserShifted : ", userInShift)
+        //console.log("isUserShifted : ", userInShift)
         return userInShift
     }
 

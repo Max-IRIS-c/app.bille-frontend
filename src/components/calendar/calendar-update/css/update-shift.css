@@ -32,3 +32,15 @@
     text-align: center;
     margin: 0;
 }
+.delete-shift-bt{
+    width: 50%;
+    background-color: #f0574f;
+    text-align: center;
+    padding: 5px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.delete-shift-bt:hover{
+    cursor: pointer;
+}

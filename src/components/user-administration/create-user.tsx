@@ -27,7 +27,7 @@ const CreateUser: FunctionComponent<Props> = ({ handleCloseCreateUser }) => {
     }
     const sendCreateUser = async() => {
         try{
-            console.log("create ! ", newUser)
+            //console.log("create ! ", newUser)
             if(!newUser.firstname || !newUser.login || !newUser.adminLevel) throw new Error()
             const sendInsertion: string = await SetRequests.createUser(newUser)
             window.alert(sendInsertion)

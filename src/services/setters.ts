@@ -33,8 +33,8 @@ type ActualShowInfos = {
 
 export default class SetRequests{
     static async setYearTemplate(data: any){
-        console.log("set year template")
-        //////console.log(data)
+        //console.log("set year template")
+        ////////console.log(data)
         try{
             const url = `${IPadress()}/api/setYearTemplate` 
             const request = await fetch(url, {
@@ -49,7 +49,7 @@ export default class SetRequests{
             const response = await request.json()
             return response.msg === 'success' ? true : false
         }catch(error){
-            ////console.log(error)
+            //////console.log(error)
             return false
         }
     }
@@ -95,13 +95,13 @@ export default class SetRequests{
             const response = await request.json()
             return response ? response : null
         }catch(error){
-            ////console.log(error)
+            //////console.log(error)
             return null
         }
     }
     //***************************** set user in extraTimes *************************************** */
     static async setUserToExtraTime(idUser: number, fkShow: number, type: string): Promise<boolean>{
-        console.log("setUserToExtraTime")
+        //console.log("setUserToExtraTime")
         if(!idUser || !fkShow || !type) return false
         const data = {
             idUser: idUser,
@@ -121,17 +121,17 @@ export default class SetRequests{
             })
             if(request.status !== 200) throw new Error()
             const response = await request.json()
-        console.log("repsonse extra :: ", response)
+        //console.log("repsonse extra :: ", response)
             if(response.msg !== 'success') throw new Error()
             else return true
         }catch(error){
-            console.log(error)
+            //console.log(error)
             return false
         }
     }
     static async unSetUserToExtraTime(idExtraTime: number | null): Promise<boolean>{
         try{
-            console.log("delete ::: ", idExtraTime)
+            //console.log("delete ::: ", idExtraTime)
             if(!idExtraTime) throw new Error()
             const url = `${IPadress()}/api/deleteUserToExtraTime` 
             const request = await fetch(url, {
@@ -145,11 +145,11 @@ export default class SetRequests{
             })
             if(request.status !== 200) throw new Error()
             const response = await request.json()
-        console.log("response delete : ", response)
+            console.log("response delete : ", response)
             if(response.msg !== 'success') return false
             else return true
         }catch(error){
-            console.log(error)
+            //console.log(error)
             return false
         }
 
@@ -168,10 +168,10 @@ export default class SetRequests{
                 body: JSON.stringify(data)
             })
             const response = await request.json()
-            console.log("response update show : ", response)
+            //console.log("response update show : ", response)
             return response ? response : null
         }catch(error){
-            ////console.log(error)
+            //////console.log(error)
             return null
         }
     }
@@ -188,10 +188,10 @@ export default class SetRequests{
                 body: JSON.stringify(givenShifts)
             })
             const response = await request.json()
-            console.log("response update shifts : ", response)
+            //console.log("response update shifts : ", response)
             return response.msg === 'success'
         }catch(error){
-            ////console.log(error)
+            //////console.log(error)
             return false
         }
     }
@@ -211,7 +211,7 @@ export default class SetRequests{
     }
     static async throwUserDelete(idUser: number): Promise<string | null>{
         try{
-            console.log("throwUserDelete : ", idUser)
+            //console.log("throwUserDelete : ", idUser)
             const url = `${IPadress()}/api/deleteUser`
             const request = await fetch(url, {
                 method: 'POST',
@@ -222,9 +222,9 @@ export default class SetRequests{
                 credentials: 'include', 
                 body: JSON.stringify({idUser: idUser})
             })
-            console.log("req : ", request)
+            //console.log("req : ", request)
             const response = await request.json()
-            console.log("response : : ", response)
+            //console.log("response : : ", response)
             return response.msg
         }catch(error){
             return null
@@ -232,7 +232,7 @@ export default class SetRequests{
     }
     static async throwUserReset(idUser: number): Promise<boolean>{
         try{
-            console.log("throwUserDelete : ", idUser)
+            //console.log("throwUserDelete : ", idUser)
             const url = `${IPadress()}/api/resetUser`
             const request = await fetch(url, {
                 method: 'POST',
@@ -243,19 +243,19 @@ export default class SetRequests{
                 credentials: 'include', 
                 body: JSON.stringify({idUser: idUser})
             })
-            console.log("req : ", request)
+            //console.log("req : ", request)
             const response = await request.json()
-            console.log("response : : ", response)
+            //console.log("response : : ", response)
             return response.msg === 'success'
         }catch(error){
-            console.log(error)
+            //console.log(error)
             return false
         }
 
     }
     static async throwUserUpdate(givenUser: UserHandler): Promise<boolean>{
         try{
-            console.log("givenUser :: ", givenUser)
+            //console.log("givenUser :: ", givenUser)
             const url = `${IPadress()}/api/updateUser`
             const request = await fetch(url, {
                 method: 'POST',
@@ -342,10 +342,28 @@ export default class SetRequests{
                 body: JSON.stringify(givenShift)
             })
             const response = await request.json()
-            console.log("update shift response : ", response)
+            //console.log("update shift response : ", response)
             return response
         }catch(error){
             return null
+        }
+    }
+    static async deleteShift(idShift: number){
+        try{
+            const url = `${IPadress()}/api/deleteShift`
+            const request = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include', 
+                body: JSON.stringify({idShift: idShift})
+            })
+            const response = await request.json()
+            //console.log("update shift response : ", response)
+            return response.status === 'success' ? true : false
+        }catch(error){
+            return false
         }
     }
 }

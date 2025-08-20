@@ -49,11 +49,11 @@ const CalendarDatePicker: FunctionComponent<Props> = ({monthInfos, handleChangeS
         return classToReturn
     }
     const displayWeeksInCalendar = (weeksArray: string[][]) => {
-        console.log("week :: ", weeksArray)
+        //console.log("week :: ", weeksArray)
         return weeksArray.map((week: string[], weekIndex: number) => {
             return (<div className="row" key={weekIndex}>
                 {week.map((date: string, dateIndex: number) => {
-                    console.log("date::: ", datesInfos)
+                    //console.log("date::: ", datesInfos)
                     const dateInfos: DateInfo | undefined = datesInfos ? datesInfos.find((info: DateInfo) => info.date === date) : undefined
                     return (
                     <div 

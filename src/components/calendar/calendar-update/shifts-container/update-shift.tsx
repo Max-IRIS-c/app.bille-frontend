@@ -16,7 +16,7 @@ const UpdateShift: FunctionComponent<Props> = ({ shift }) => {
     const [actualShift, setactualShift] = useState<Shift>(null!)
 
     useEffect(() => {
-        console.log("givenSHift ::: ", shift)
+        //console.log("givenSHift ::: ", shift)
         setactualShift(shift)
     }, [])
 
@@ -51,6 +51,17 @@ const UpdateShift: FunctionComponent<Props> = ({ shift }) => {
         const updatedShift: Shift = actualShift.removeUser(givenUser)
         setactualShift(updatedShift)
     }
+    const handleDeleteShift = async (idShift: number) => {
+        try{
+            const req = await SetRequests.deleteShift(idShift)
+            if(!req) throw new Error()
+            window.alert("Le shift a bien été supprimé")
+            window.location.reload()
+        }catch(error){
+            window.alert("Oups, il y a eu un soucis")
+            window.location.reload()
+        }
+    }
     return (
         <div id="update-shift-content">
             {
@@ -70,6 +81,7 @@ const UpdateShift: FunctionComponent<Props> = ({ shift }) => {
                         handleRemoveUserFromShift={handleRemoveUserFromShift}
                         users={(actualShift.users.length <= 0) ? null : actualShift.users} 
                     /> 
+                    <p className="delete-shift-bt" onClick={() => { handleDeleteShift(actualShift.idShift) }}>Supprimer Shift</p>
                 </>           
             }
         </div>

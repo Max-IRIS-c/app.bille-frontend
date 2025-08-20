@@ -34,7 +34,7 @@ const CalendarDetails2: FunctionComponent = () => {
     useEffect(() => {
         const getDataInfos = async () => {  
             const newData: Show | null = await GetRequests.getDateInfos(idShowNumber!)  
-            //console.log("DATA ::: ", newData)      
+            ////console.log("DATA ::: ", newData)      
             if(newData) setShowInfos(newData)
         }
         getDataInfos()      

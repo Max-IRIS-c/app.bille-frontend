@@ -32,27 +32,27 @@ const CalendarDetails: FunctionComponent = () => {
     }, [idShow])
     
     useEffect(() => {
-        console.log("showInfos : ", showInfos)
+        //console.log("showInfos : ", showInfos)
     }, [showInfos])
     
     const setInfos = async() => {
         try{
             if(!idShow) throw new Error()
             const formatedId: number = parseInt(idShow) 
-            console.log("formatedId :::", formatedId)
+            //console.log("formatedId :::", formatedId)
             const dataOfShow: ShowHandler = await getShowInfos(formatedId)  
-            console.log("dataOfShow : ", dataOfShow)
+            //console.log("dataOfShow : ", dataOfShow)
             const show: ShowHandler = dataOfShow.formatedShow()
             if(dataOfShow) setShowInfos(show)
             else throw new Error()
         }catch(err){
-            console.log("erreur getShowInfos : ", err)
+            //console.log("erreur getShowInfos : ", err)
         } 
     }
 
     const getShowInfos = async (idShow: number): Promise<ShowHandler> => {
         const rawData: ShowHandler | null = await GetRequests.getDateInfos(idShow)
-        console.log("rawData : ", rawData)
+        //console.log("rawData : ", rawData)
         if (!rawData) throw new Error("Aucune donnée reçue")
         return rawData
     }

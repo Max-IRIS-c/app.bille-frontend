@@ -20,7 +20,7 @@ const ResponsableZone: FunctionComponent<Props> = ({ responsableId, idShow, hand
     const myId = useRef<number>((UserConnexion.getUserData()).idUser)
 
     useEffect(() => {       
-        console.log("responsableId : ", responsableId)          
+        //console.log("responsableId : ", responsableId)          
         const insertUserData = async (): Promise<void> => {         
             try{                
                 if(responsableId === null) throw new Error()                

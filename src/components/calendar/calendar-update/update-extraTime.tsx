@@ -84,7 +84,7 @@ const UpdateExtraTime: FunctionComponent<Props> = ({ extraTimes }) => {
                         <option value="">-</option>
                         {
                             userList.map((user: ListedUser, index: number) => {
-                                //console.log("user ::: ", user)
+                                ////console.log("user ::: ", user)
                                 return <option value={user.idUser} key={index}>{user.firstname}</option>
                             })
                         }

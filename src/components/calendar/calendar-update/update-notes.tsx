@@ -12,7 +12,7 @@ const UpdateNotes: FunctionComponent<Props> = ({ notes, handleChangeNotes, statu
     const [updated, setUpdated] = useState<boolean>(false)
 
     useEffect(() => {
-        console.log("notes : ", notes)
+        //console.log("notes : ", notes)
         const notesToSet: string |null = (status === 'soiree' && (!notes || notes === "")) ? 
         'Nom événement : salut salut\n' +
         'Horaire :  \n' +

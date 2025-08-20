@@ -49,7 +49,7 @@ export default class GetRequests{
                credentials: 'include' 
             })
             const response = await req.json();
-            console.log("RESPONSE :: ", response)
+            //console.log("RESPONSE :: ", response)
             return response && response.msg === 'success_getAllShowAndShifts' ? response.data : []
          }catch(error){
             return 'error'
@@ -69,7 +69,7 @@ export default class GetRequests{
             const response = await req.json();
             return response && response.msg === "success_getUserList" ? response.data : null
          }catch(error){
-            ////console.log(error)
+            //////console.log(error)
             return 'error'
          } 
       }
@@ -87,7 +87,7 @@ export default class GetRequests{
             })
             const response = await req.json()
             if(response.msg !== 'success_containData') return null
-            console.log("response : ", response)
+            //console.log("response : ", response)
             const recievedShow = response.data
             const newShow = new ShowHandler(
                recievedShow.laBilleShowId,
@@ -99,10 +99,10 @@ export default class GetRequests{
                recievedShow.shifts, 
                recievedShow.extraTimes,
             )
-            console.log("newShow : ",newShow)
+            //console.log("newShow : ",newShow)
             return newShow
          }catch(error){
-            console.log("error : ", error)
+            //console.log("error : ", error)
             return null
          } 
       }
@@ -118,7 +118,7 @@ export default class GetRequests{
                  credentials: 'include' 
             })
             const response = await req.json();
-            //console.log("response : ", response) 
+            ////console.log("response : ", response) 
             const dataToReturn = {
                idUser: response.user.idUser,
                firstname: response.user.firstname

@@ -97,7 +97,7 @@ const CalendarDetails: FunctionComponent = () => {
             { (showInfos && showInfos.status !== 'soiree') ? null :
                 <ResponsableZone idShow={showInfos.laBilleShowId} responsableId={showInfos.showResponsable} handleChangeResponsable={handleChangeResponsable}/>  
             }{
-                (showInfos && showInfos.status !== 'ferme') ? <Notes showNotes={showInfos.notes} status={showInfos.status} /> : null
+                showInfos && <Notes showNotes={showInfos.notes} status={showInfos.status} />
             }{
                 <>           
                     { 

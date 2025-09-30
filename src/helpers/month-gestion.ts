@@ -20,6 +20,7 @@ export default class MonthGestion {
 
     // return all dates of the weeks from the month and year specified
     static getCalendarWeeksFromMonthNumber = (month: number, year: number): string[][] => {
+        console.log(month, ", ", year)
         const firstDayOfMonth = startOfMonth(new Date(year, month - 1)); // Le mois commence à 0 (janvier = 0)
         const lastDayOfMonth = endOfMonth(new Date(year, month - 1));  
         const firstDayOfCalendar = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 }); // Lundi
@@ -29,9 +30,18 @@ export default class MonthGestion {
         for (let i = 0; i < days.length; i += 7) {
             weeks.push(days.slice(i, i + 7));
         }
+        console.log("weeks", weeks)
         return weeks.map(week => week.map(day => format(day, 'yyyy-MM-dd'))); // Retourne des dates formatées
     };
-    
+    static getDaysInMonth(year: number, month: number) {
+        // month = 1 (janvier) → 12 (décembre)
+        // JavaScript attend 0–11 pour les mois, donc on fait month - 1
+        const date = new Date(year, month, 0); // "0" = dernier jour du mois précédent
+        const daysCount = date.getDate(); // nombre de jours dans le mois
+
+        // Générer un tableau [1, 2, ..., daysCount]
+        return Array.from({ length: daysCount }, (_, i) => i + 1);
+    }
     static isDateToday = (date: Date) => {
         return new Date() === date
     } 
@@ -47,4 +57,11 @@ export default class MonthGestion {
         //////console.log(`${day} ${dateDay} ${dateMonth} ${dateYear}`)
         return `${day} ${dateDay} ${dateMonth} ${dateYear}`  || null;
     } 
+    static formatDateIso(isoString: any) {
+        const date = new Date(isoString);
+        const day = String(date.getUTCDate()).padStart(2, "0");
+        const month = String(date.getUTCMonth() + 1).padStart(2, "0"); // +1 car getUTCMonth() commence à 0
+        const year = date.getUTCFullYear();
+        return `${day}-${month}-${year}`;
+    }
 } 

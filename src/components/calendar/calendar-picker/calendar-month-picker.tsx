@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import MonthGestion from '../../../helpers/month-gestion';
 import CalendarDatePicker from './calendar-date-picker';
 import './calendar.css';
+import RecapDetails from '../../recap/recap-details';
 
 export type SelectedMonth = {
     monthNumber: number,
@@ -9,10 +10,11 @@ export type SelectedMonth = {
     monthLabel: string
 }
 type Props = {
-    handleChangeSelectedDate: (newVal: number) => void
+    source: "calendar" | "recap", 
+    handleChangeSelectedDate: (newVal: number) => void 
 }
 
-const CalendarMonthPicker: FunctionComponent<Props> = ({ handleChangeSelectedDate }) => {
+const CalendarMonthPicker: FunctionComponent<Props> = ({ handleChangeSelectedDate, source }) => {
     const [monthInfos, setMonthInfos] = useState<SelectedMonth>(MonthGestion.getMonthInfoFromDate(new Date()));
 
     // incrémentation positif ou négatif du mois séléctionné 
@@ -53,7 +55,8 @@ const CalendarMonthPicker: FunctionComponent<Props> = ({ handleChangeSelectedDat
                     onClick={() => { scrollMonth('next') }} 
                 >{'>>'}</button>
             </div>
-            <CalendarDatePicker monthInfos={monthInfos} handleChangeSelectedDate= {handleChangeSelectedDate} />
+            { source === 'calendar' ? <CalendarDatePicker monthInfos={monthInfos} handleChangeSelectedDate= {handleChangeSelectedDate} /> : null }
+            { source === 'recap' ? <RecapDetails dataOfMonth={monthInfos} /> : null}
         </div> 
     );
 }

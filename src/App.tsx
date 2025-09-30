@@ -12,6 +12,7 @@ import Planification from './pages/planification';
 import UserAdministration from './pages/users-administration';
 import Login from './pages/login';
 import UserConnexion from './helpers/user-connexion';
+import Recap from './pages/recap';
 
 // Nouveau composant pour gérer conditionnellement le layout
 const AppContent: FunctionComponent = () => {
@@ -38,6 +39,7 @@ const AppContent: FunctionComponent = () => {
                 <ul id="nav-mobile" className="left hide-on-med-and-down">                                 
                   { myAdminLevel === 1 ? <li className="tab"><Link to="/planification">Planification</Link></li> : null }
                   { myAdminLevel === 1 ? <li className="tab"><Link to="/users">Utilisateurs</Link></li> : null }   
+                  { myAdminLevel === 1 ? <li className="tab"><Link to="/recap">Récap</Link></li> : null}
                   <li className="tab"><Link to='/calendar'>Calendrier</Link></li>
                   <li className="tab"><Link to="/myInfos">Mes infos</Link></li>
                 </ul>
@@ -47,6 +49,7 @@ const AppContent: FunctionComponent = () => {
           <ul className="sidenav" id="mobile-menu">           
             { myAdminLevel === 1 ? <li><Link to="/planification">Planification</Link></li> : null }
             { myAdminLevel === 1 ? <li><Link to="/users">Utilisateurs</Link></li> : null }
+            { myAdminLevel === 1 ? <li><Link to="/recap">Récap</Link></li> : null }
             <li><Link to="/calendar">Calendrier</Link></li>
             <li><Link to="/myInfos">Mes infos</Link></li>
           </ul>
@@ -63,6 +66,7 @@ const AppContent: FunctionComponent = () => {
         <Route path='/planification' element={<Planification />} />
         <Route path='/users' element={<UserAdministration />} />
         <Route path="/login" element={<Login />} />
+        <Route path='/recap' element={<Recap />} />
       </Routes>
     </>
   );

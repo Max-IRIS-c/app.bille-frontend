@@ -43,7 +43,7 @@ export default class Shift {
         return this.formatedShift()
     }
     changeMaxUsers(newMaxUsers: string): Shift{
-        this.maxUsers = parseInt(newMaxUsers)
+        this.maxUsers = newMaxUsers !== '' ? parseInt(newMaxUsers) : 0
         return this.formatedShift()
     }
     addUser(newUser: ShiftedUser): Shift | string {

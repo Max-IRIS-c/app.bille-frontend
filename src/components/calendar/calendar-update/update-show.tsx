@@ -63,7 +63,7 @@ const UpdateShow: FunctionComponent<Props> = ({ givenShow }) => {
                     </>
                 }
                 {
-                    showInfos.status !== 'ferme' ? <UpdateNotes notes={showInfos.notes} handleChangeNotes={handleChangeNotes} status={showInfos.status} /> : null 
+                    <UpdateNotes notes={showInfos.notes} handleChangeNotes={handleChangeNotes} status={showInfos.status} /> 
                 }
                 <div id="confirm-show-update">
                     <button onClick={handleConfirmModification} id="confirm-bt-show">Confirmer modifications</button>

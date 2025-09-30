@@ -74,7 +74,7 @@ const UpdateShift: FunctionComponent<Props> = ({ shift }) => {
                     </div>
                     <div id="container-maxUsers">
                         <label htmlFor="maxUsers">Bénévoles attendus</label>
-                        <input type="number" id="maxUsers" value={actualShift.maxUsers} onChange={(e) => handleChangeMaxUsers(e.target.value)} />
+                        <input type="number" id="maxUsers" value={actualShift.maxUsers > 0 ? actualShift.maxUsers : ''} onChange={(e) => handleChangeMaxUsers(e.target.value)} />
                     </div>
                     <UpdateShiftUsers 
                         handleAddUserToShift={handleAddUserToShift}  

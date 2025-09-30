@@ -21,7 +21,6 @@ const CalendarDatePicker: FunctionComponent<Props> = ({monthInfos, handleChangeS
     const [selectedMonthInfos, setSelectedMonthInfos] = useState<SelectedMonth>(monthInfos)// props heritée du 
     const [allDatesOfMonth, setAllDatesOfMonth] = useState<string[][]>(MonthGestion.getCalendarWeeksFromMonthNumber(selectedMonthInfos.monthNumber, selectedMonthInfos.yearNumber))
     const [datesInfos, setDatesInfos] = useState<DateInfo[]>([])
-    const [dateClicked, setDateClicked] = useState<number | null>(null)
     
     // update of the dates and DateInfo to display in calendar
     useEffect(() => {
@@ -37,12 +36,9 @@ const CalendarDatePicker: FunctionComponent<Props> = ({monthInfos, handleChangeS
     }
     const setClassForDate = (dateInfos: DateInfo | undefined) => {
         let classToReturn = `col s1 waves-effect rowDate`
-        // isnt in actual month
-        if(!dateInfos || !isDateOnActualMonth(dateInfos.date)) return classToReturn
-        // is today
-        if (MonthGestion.isDateToday(new Date(dateInfos.date))) classToReturn += ' today'
-        // status
-        if(dateInfos.status === 'ferme') classToReturn += ' closedDate'
+        if(!dateInfos || !isDateOnActualMonth(dateInfos.date)) return classToReturn // isnt in actual month   
+        if(MonthGestion.isDateToday(new Date(dateInfos.date))) classToReturn += ' today' // is today        
+        if(dateInfos.status === 'ferme') classToReturn += ' closedDate' // status
         else if(dateInfos.status === 'normale') classToReturn += ' normalDate'
         else if(dateInfos.status === 'reunion') classToReturn += ' reunionDate' 
         else if(dateInfos.status === 'soiree') classToReturn += ' soireeDate' 
@@ -53,7 +49,6 @@ const CalendarDatePicker: FunctionComponent<Props> = ({monthInfos, handleChangeS
         return weeksArray.map((week: string[], weekIndex: number) => {
             return (<div className="row" key={weekIndex}>
                 {week.map((date: string, dateIndex: number) => {
-                    //console.log("date::: ", datesInfos)
                     const dateInfos: DateInfo | undefined = datesInfos ? datesInfos.find((info: DateInfo) => info.date === date) : undefined
                     return (
                     <div 

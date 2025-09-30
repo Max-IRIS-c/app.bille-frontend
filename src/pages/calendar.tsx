@@ -18,7 +18,7 @@ const Calendar: FunctionComponent = () => {
     }
     return(
             <div id='calendar-open'>     
-                <CalendarMonthPicker handleChangeSelectedDate={handleChangeSelectedDate}/>
+                <CalendarMonthPicker handleChangeSelectedDate={handleChangeSelectedDate} source='calendar'/>
                 <Outlet />
             </div>
     )

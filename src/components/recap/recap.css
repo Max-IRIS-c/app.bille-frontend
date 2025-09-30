@@ -1,0 +1,26 @@
+#recap-details-component, table{
+    width: 100vw;
+}
+table tr{ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+.case{
+    width: 50px;
+    border: 1px solid black;
+}
+.userCase{
+    width: 120px;
+    margin: 0;
+    background-color: #43a047;
+}
+.date{
+    background-color: #43a047 ;
+    color: white;
+}
+.subCase{
+    display: flex;
+    flex-direction: column;
+}

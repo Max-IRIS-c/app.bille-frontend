@@ -116,7 +116,21 @@
         margin: 2.5%;
     }
 
-}/*
+}
+.isNotes{
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 5px;
+    font-size: xx-small;
+    margin: 0;
+    background-color: black;
+    color: white;
+    vertical-align: center;
+}
+/*
 @media (min-width: 425px) {
     .row{
         margin-left: 10%;

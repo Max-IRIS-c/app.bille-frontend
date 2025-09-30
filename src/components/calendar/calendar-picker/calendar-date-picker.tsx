@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
-import CalendarDetails from "../calendar-detail/calendar-detail"
 import { SelectedMonth } from "./calendar-month-picker";
 import MonthGestion from "../../../helpers/month-gestion";
 import GetRequests from '../../../services/getters'
@@ -13,7 +12,8 @@ type DateInfo = {
     laBilleShowId: number,
     date: string,
     status: string,
-    isShowFull: boolean
+    isShowFull: boolean,
+    notes: string | null
 }
 
 
@@ -61,6 +61,7 @@ const CalendarDatePicker: FunctionComponent<Props> = ({monthInfos, handleChangeS
                         >
                         {new Date(date).getDate()}
                         { (dateInfos && isDateOnActualMonth(dateInfos.date) && !dateInfos.isShowFull) ? <p className="needSomeOne">!</p> : null }             
+                        { dateInfos?.notes && dateInfos.status === 'ferme' && <p className="isNotes">⚠️</p>}
                     </div>
                     )
                 })}

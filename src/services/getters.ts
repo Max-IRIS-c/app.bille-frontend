@@ -175,5 +175,27 @@ export default class GetRequests{
             return []
          }
       }
-      
+      // return 3 values for the user & month specified
+      // 1) 'valid' = shifted 2x or +
+      // 2) 'middle' = shifted 1x
+      // 3) 'not-valid' = shifted 0x
+      static async getUserRecap(userId: number, monthNbr: number, yearNbr: number): Promise<string>{
+         try{
+            const url = `${IPadress()}/api/get-recap?idUser=${userId}&monthNbr=${monthNbr}&yearNbr=${yearNbr}`
+            const req = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${getToken()}`
+                }, 
+                credentials: 'include' 
+            })
+            const response = await req.json();
+            console.log(response)
+            if(response.status !== 'success' || !response.data) throw new Error()
+            return response.data
+         }catch(error){
+            return 'not-valid'
+         }
+      }
 }

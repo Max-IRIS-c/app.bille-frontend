@@ -18,3 +18,24 @@
     justify-content: center;
     align-items: center;
 }
+.user-title{
+    padding: 15px;
+}
+@media screen and (max-width: 768px){
+    #user-admin-all{
+        display: flex;
+        flex-direction: column;
+    }
+    #menu, 
+    #menu button{
+        width: 100%;
+    }
+    #menu button{
+        padding: 15px;
+    }
+    #users-container,
+    .user-title,
+    #user-form-container{
+        width: 100%;
+    }
+}

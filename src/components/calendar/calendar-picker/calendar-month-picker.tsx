@@ -56,7 +56,6 @@ const CalendarMonthPicker: FunctionComponent<Props> = ({ handleChangeSelectedDat
                 >{'>>'}</button>
             </div>
             { source === 'calendar' ? <CalendarDatePicker monthInfos={monthInfos} handleChangeSelectedDate= {handleChangeSelectedDate} /> : null }
-            { source === 'recap' ? <RecapDetails dataOfMonth={monthInfos} /> : null}
         </div> 
     );
 }

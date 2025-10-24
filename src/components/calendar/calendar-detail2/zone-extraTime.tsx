@@ -43,9 +43,6 @@ const ExtraTimeZone: FunctionComponent<Props> = ({ type, times, idShow }) => {
     const handleExtraTimeSubscribtion = async (idExtraTime: number | null, type: string, status: string) => {
         try{
         const idUser = UserConnexion.getUserData().idUser
-        console.log("id: ", idExtraTime)
-        console.log("status : ", status)
-        console.log("type : ", type)
         let doAction: boolean = 
             (status === 'add') ? 
             await SetRequests.setUserToExtraTime(idUser, idShow, type)
@@ -73,8 +70,15 @@ const ExtraTimeZone: FunctionComponent<Props> = ({ type, times, idShow }) => {
     
     return (
         <div id='extraTimes_container'>
-            <h6>{ timeType }</h6>
-            <hr />
+            <div className="extra-tit">
+                <h6><strong>{ timeType }</strong></h6>
+                {   // buttons
+                    !userIn ? <button onClick={() => handleExtraTimeSubscribtion(null, type, 'add')} className="subscr-user subscribe">S'inscrire</button> 
+                    : userIn ? <button onClick={() => handleExtraTimeSubscribtion(concernedTimes[0].idExtraTime, type, 'remove')} className="subscr-user">Désinscrire</button>
+                    : null
+                }
+            </div>
+            <hr className="lin"/>
             <div className="users-extra">
                 {   // users
                     concernedTimes ? concernedTimes.map((user: User, index: number) => {
@@ -82,12 +86,7 @@ const ExtraTimeZone: FunctionComponent<Props> = ({ type, times, idShow }) => {
                     }) : null
                 }
             </div>
-            <hr />
-            {   // buttons
-                !userIn ? <button onClick={() => handleExtraTimeSubscribtion(null, type, 'add')} className="subscr-user">S'inscrire</button> 
-                : userIn ? <button onClick={() => handleExtraTimeSubscribtion(concernedTimes[0].idExtraTime, type, 'remove')} className="subscr-user">Désinscrire</button>
-                : null
-            }
+            <hr className="lin" />
         </div>
     )
 }

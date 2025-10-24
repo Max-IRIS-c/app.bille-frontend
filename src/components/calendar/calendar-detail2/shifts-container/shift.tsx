@@ -88,7 +88,7 @@ const ShiftZone: FunctionComponent<Props> = ({ shiftData, maxUsers }) => {
                     {   /* Si user inscrit */
                         userShifted ? <button onClick={() => handleUnsubscribeUser(shiftData.idShift)} className='subscribeBt'>Se désinscrire</button>
                         /* Si shift pas plein et user pas inscrit */
-                        : !userShifted ? <button className='subscribeBt' onClick={() => handleSubscribeUser(shiftData.idShift)}>S'inscrire</button> 
+                        : !userShifted ? <button className='subscribe subscribeBt' onClick={() => handleSubscribeUser(shiftData.idShift)}>S'inscrire</button> 
                         : null
                     }{
                         

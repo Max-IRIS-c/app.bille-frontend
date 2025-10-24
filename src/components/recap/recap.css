@@ -135,12 +135,11 @@ table tr{
   justify-content: center;
   align-items: center;
   margin: auto;
-  width: 15%;
 }
-input{
+.year-labl{
   text-align: center;
 }
-button{
+.year-bt{
   padding: 10px;
   text-align: center;
   background-color: black;
